@@ -1,3 +1,0 @@
-docker-joomla
-=============
-# docker-joomla
