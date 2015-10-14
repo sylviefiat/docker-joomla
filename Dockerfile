@@ -1,5 +1,5 @@
 FROM centurylink/apache-php:latest
-MAINTAINER YWKS <yesweekend.smile@gmail.com>
+MAINTAINER sylviefiat <sylvie.fiat@ird.fr>
 
 ENV JOOMLA_VERSION 3.3.6
 
@@ -14,8 +14,8 @@ RUN apt-get update && \
 # Download Joomla into /app
 RUN rm -fr /app && mkdir /app && \
  wget https://github.com/joomla/joomla-cms/releases/download/$JOOMLA_VERSION/Joomla_$JOOMLA_VERSION-Stable-Full_Package.zip && \
- unzip Joomla_$JOOMLA_VERSION-Stable-Full_Package.zip -d /app  && \
- rm Joomla_$JOOMLA_VERSION-Stable-Full_Package.zip
+ unzip Joomla_$JOOMLA_VERSION-Stable-Full_Package.zip -d /app  
+ #rm Joomla_$JOOMLA_VERSION-Stable-Full_Package.zip
 
 # Fix permissions for apache
 RUN chown -R www-data:www-data /app
