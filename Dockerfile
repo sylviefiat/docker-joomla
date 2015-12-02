@@ -7,7 +7,7 @@ ENV JOOMLA_VERSION 3.3.6
 RUN apt-get update && \
  DEBIAN_FRONTEND=noninteractive apt-get -y upgrade && \
  DEBIAN_FRONTEND=noninteractive apt-get -y install supervisor pwgen && \
- apt-get -y install wget unzip && \
+ apt-get -y install wget unzip php5-curl && \
  apt-get -y install mysql-client && \
  apt-get -y install postgresql-client
 
@@ -16,6 +16,8 @@ RUN rm -fr /app && mkdir /app && \
  wget https://github.com/joomla/joomla-cms/releases/download/$JOOMLA_VERSION/Joomla_$JOOMLA_VERSION-Stable-Full_Package.zip && \
  unzip Joomla_$JOOMLA_VERSION-Stable-Full_Package.zip -d /app  
  #rm Joomla_$JOOMLA_VERSION-Stable-Full_Package.zip
+
+RUN apt-get install php-ldap
 
 # Fix permissions for apache
 RUN chown -R www-data:www-data /app
